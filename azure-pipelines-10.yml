@@ -23,3 +23,12 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students (e21e24a3-7d48-40b7-a51a-737ae237bfd9)'
+    appType: 'webAppLinux'
+    WebAppName: 'yak2001'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|16-lts'
+    StartupCommand: 'npm start'
